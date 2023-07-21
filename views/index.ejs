@@ -24,6 +24,33 @@
       </ul>
     </div>
   </nav>
+    <!-- Modal Login-->
+  <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="login">Iniciar Sesion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form id="formLogin" action="/login" method="POST">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
+              </div>
+              <br>
+              <div class="form-floating">
+                <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña">
+              </div> 
+              <br>
+              <button class="btn btn-primary" type="submit">Ingresar</button>
+              <a type="button" class="btn btn-secondary" data-dismiss="modal" href="/home">Cerrar</a>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal contactanos-->
   <div class="modal fade" id="contacto" tabindex="-1" role="dialog" aria-labelledby="contacto" aria-hidden="true">
@@ -36,7 +63,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form id="formContacto" action="/contacto" method="POST">
+            <form id="formContacto" action="/crearContacto" method="POST">
               <div class="form-floating">
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
               </div>

@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from'dotenv';
 import cookieParser from 'cookie-parser';
 import routes from './routes/indexRoutes.js';
+import contactoRoutes from './routes/contactoRoutes.js';
+import usuarioRoutes from './routes/usuarioRoutes.js';
 
 const app = express()
 
@@ -21,20 +23,11 @@ dotenv.config({path: './env/.env'})
 // para poder trabajar con las cookies
 app.use(cookieParser())
 
-// // LLamar al router
 
+// LLamar al router
 app.use(routes);
-// app.use('/', require('./routes/indexRoutes'))
-
-// const usuario = require('./routes/usuario')
-// app.use(usuario);
-
-// const empresa = require('./routes/empresa')
-// app.use(empresa)
-
-// const cliente = require('./routes/cliente')
-// app.use(cliente)
-
+app.use(contactoRoutes);
+app.use(usuarioRoutes);
 
 app.listen(3000, () =>{
     console.log('Servidor Corriendo en http://localhost:3000')
