@@ -26,4 +26,60 @@ Contacto.crearContacto = async (contacto) =>{
 
 };
 
+Contacto.listarContactos = async () =>{
+    try {
+       const pool = await createPool();
+       const connection = await pool.getConnection();
+       const query = `SELECT *, DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha_registro FROM contacto WHERE id_estado_usuario = 1 ORDER BY fecha DESC`;
+       const [rows] = await connection.execute(query);
+
+       return rows;
+    } catch (error) {
+      res.status(400)
+       console.log('error en el metodo listar contacto: ', error);
+    }
+
+};
+
+Contacto.listarContactosDeshabilitados = async () =>{
+    try {
+       const pool = await createPool();
+       const connection = await pool.getConnection();
+       const query = `SELECT *, DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha_registro FROM contacto WHERE id_estado_usuario = 2 ORDER BY fecha DESC`;
+       const [rows] = await connection.execute(query);
+
+       return rows;
+    } catch (error) {
+      res.status(400)
+       console.log('error en el metodo listar contacto: ', error);
+    }
+
+};
+
+Contacto.deshabilitarContacto = async (contacto) =>{
+    try {
+       const estado = 2; 
+       const pool = await createPool();
+       const connection = await pool.getConnection();
+       const query = `UPDATE contacto SET id_estado_usuario = ? WHERE id_contacto = ?`;
+       const [rows] = await connection.execute(query,[estado, contacto]);
+        
+    } catch (error) {
+        
+    }
+}
+
+Contacto.habilitarContacto = async (contacto) =>{
+    try {
+       const estado = 1; 
+       const pool = await createPool();
+       const connection = await pool.getConnection();
+       const query = `UPDATE contacto SET id_estado_usuario = ? WHERE id_contacto = ?`;
+       const [rows] = await connection.execute(query,[estado, contacto]);
+        
+    } catch (error) {
+        
+    }
+}
+
 export {Contacto};

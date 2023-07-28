@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="row">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse flex-wrap flex-md-nowrap">
+            <div>
+              <h4 class="text-center">HydroGreen <i class="fa-solid fa-leaf"></i></h4>
+            </div>
+            <div class="position-sticky pt-3 " >
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="contacto">
+                    <span data-feather="home"></span>
+                    Contactos <i class="fa-solid fa-address-book"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link " aria-current="page" href="empresa">
+                      <span data-feather="home"></span>
+                      Empresas <i class="fa-solid fa-building"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link " aria-current="page" href="cliente">
+                      <span data-feather="home"></span>
+                      Clientes <i class="fa-solid fa-user-tie"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="usuario">
+                      <span data-feather="home"></span>
+                      Usuarios <i class="fa-solid fa-user"></i>
+                      </a>
+                  </li>
+                  
+                </ul>
+            </div>
+          </nav>
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              
+                <h1 class="h2">Administrador:</h1>  
+              
+              <a type="button" class="btn btn-danger" href="/">Salir <i class="fa-solid fa-door-open"></i></a>
+            </div>
+            
+          </main>
+        </div>
+    </div>
+
+   
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/923fb35536.js" crossorigin="anonymous"></script>
+
+    <% if (typeof alert !== 'undefined' && alert) { %>
+      <script>
+        Swal.fire({
+          title: '<%= alertTitle %>',
+          text:'<%= alertMessage %>',
+          icon:'<%= alertIcon %>',
+          showConfirmButton: '<%= showConfirmButton %>' ,
+          timer: '<%= timer %>'
+        }).then(()=>{
+          window.location = '/<%= ruta %>'
+        })
+      </script>
+    <% } %>
+  </body>
+</html>

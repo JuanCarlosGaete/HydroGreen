@@ -107,8 +107,8 @@
         title: '<%= alertTitle %>',
         text:'<%= alertMessage %>',
         icon:'<%= alertIcon %>',
-        showConfirmButton: <%= showConfirmButton %>,
-        timer: <%= timer %>
+        showConfirmButton: '<%= showConfirmButton %>' ,
+        timer: '<%= timer %>'
       }).then(()=>{
         window.location = '/<%= ruta %>'
       })
@@ -116,5 +116,4 @@
   <% } %>
 
   </body>
-</body>
 </html>

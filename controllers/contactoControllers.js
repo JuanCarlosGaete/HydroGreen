@@ -1,7 +1,6 @@
 import {Contacto} from '../models/contacto.js';
 
 export const crearContacto = async(req, res)=>{
-
     const nombre = req.body.nombre;
     const apellido = req.body.apellido;
     const telefono = req.body.telefono;
@@ -23,10 +22,47 @@ export const crearContacto = async(req, res)=>{
                 ruta: "",
               });
         } catch (error) {
-            res.status(500).send('Error al crear el Contacto')
-        }
-        
+            res.status(500).send('Error al crear el Contacto');
+        }   
     }else{
-        res.status(400).send('Error')
+        res.status(400).send('Error');
     }
 };
+
+export const listarContacto = async(req, res) =>{
+    try {
+        const datosContacto = await Contacto.listarContactos();
+        res.render("contacto/listar", {datosContacto:datosContacto});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const listarContactoDeshabilitado = async(req, res) =>{
+    try {
+        const datosContacto = await Contacto.listarContactosDeshabilitados();
+        res.render("contacto/listarDeshabilitado", {datosContacto:datosContacto});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deshabilitarContacto = async(req, res) =>{
+    const contacto = req.params.id_contacto
+    try {
+        await Contacto.deshabilitarContacto(contacto);
+        res.redirect("/contacto")
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const habilitarContacto = async(req, res) =>{
+    const contacto = req.params.id_contacto
+    try {
+        await Contacto.habilitarContacto(contacto);
+        res.redirect("/contactoDeshabilitado")
+    } catch (error) {
+        console.log(error);
+    }
+}

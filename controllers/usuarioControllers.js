@@ -1,4 +1,5 @@
 import {Usuario} from '../models/usuario.js';
+import {Contacto} from '../models/contacto.js';
 
 export const login = async(req, res)=>{
 
@@ -7,9 +8,9 @@ export const login = async(req, res)=>{
 
     if(usuario && contrasena){
         try {
-            const datos = await Usuario.login(usuario, contrasena);
-            console.log("datos:" + !datos.length)
-            if(!datos.length){
+            const datosUsuario = await Usuario.login(usuario, contrasena);
+            console.log("datos:" + !datosUsuario.length)
+            if(!datosUsuario.length){
                 res.status(401).render("index", {
                     alert: true,
                     alertTitle: "Error",
@@ -19,16 +20,21 @@ export const login = async(req, res)=>{
                     timer: 4000,
                     ruta: "",
                   });
+            }else if(datosUsuario[0].id_rol == 1){
+                res.redirect("/homeAdmin")
+
             }else{
-                res.status(201).render("home", {
-                    alert: true,
-                    alertTitle: "Sesion Iniciada",
-                    alertMessage: "Credenciales Correctas",
-                    alertIcon: "success",
-                    showConfirmButton: false,
-                    timer: 4000,
-                    ruta: "home",
-                  });
+                {
+                    res.status(401).render("index", {
+                        alert: true,
+                        alertTitle: "Error",
+                        alertMessage: "usuario rol usuario",
+                        alertIcon: "error",
+                        showConfirmButton: false,
+                        timer: 4000,
+                        ruta: "",
+                      });
+                }
 
             }
         } catch (error) {

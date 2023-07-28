@@ -5,8 +5,8 @@ route.get('/', (req, res) =>{
     res.render('index')
 })
 
-route.get('/home', (req, res) =>{
-    res.render('home')
+route.get('/homeAdmin', (req, res) =>{
+    res.render('homeAdmin')
 })
 
 

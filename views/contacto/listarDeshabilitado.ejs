@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="row">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse flex-wrap flex-md-nowrap">
+            <div>
+              <h4 class="text-center">HydroGreen <i class="fa-solid fa-leaf"></i></h4>
+            </div>
+            <div class="position-sticky pt-3 " >
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="administrador/contacto">
+                    <span data-feather="home"></span>
+                    Contactos <i class="fa-solid fa-address-book"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link " aria-current="page" href="empresa">
+                      <span data-feather="home"></span>
+                      Empresas <i class="fa-solid fa-building"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link " aria-current="page" href="cliente">
+                      <span data-feather="home"></span>
+                      Clientes <i class="fa-solid fa-user-tie"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="usuario">
+                      <span data-feather="home"></span>
+                      Usuarios <i class="fa-solid fa-user"></i>
+                      </a>
+                  </li>
+                  
+                </ul>
+            </div>
+          </nav>
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              
+                <h1 class="h2">Administrador</h1>  
+              
+              <a type="button" class="btn btn-danger" href="/">Salir <i class="fa-solid fa-door-open"></i></a>
+            </div>
+            <div class="row mt-4 ">
+              <div class="col-md-10 mx-auto">
+                <div class="card  border border-success">
+                  <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between ">
+                      <h5 class="mb-2">Listado Contactos Deshabilitados</h5>
+                    </div>
+                    <br>
+                    <a class="btn btn-secondary" href="/contacto"><i class="fa-solid fa-list"></i> Contactos habilitados</a>
+                    <br>
+                    <br>
+                  </div>
+                  <br>
+                  <div class="table-responsive">
+                      <table id="contacto" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                               <th class="text-center">Nombre</th>
+                                <th class="text-center">Telefono</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Acciones <i class="fa-solid fa-wrench"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <% datosContacto.forEach((contacto) =>{ %>
+                            <tr>
+                                <input value="<%= contacto.id_contacto %>" hidden>
+                                <td class="text-center"><%= contacto.nombre %> <%= contacto.apellido %></td>
+                                <td class="text-center"><%= contacto.telefono %></td>
+                                <td class="text-center"><%= contacto.email %></td>
+                                <td class="text-center"><%= contacto.fecha_registro %></td>
+                                <td class="text-center">
+                                  <a href="/habilitarContacto/<%= contacto.id_contacto%>" class="btn btn-success">Habilitar <i class="fa-regular fa-circle-check"></i></a>
+                                </td>
+                            </tr>
+                          <%}) %>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+    </div>
+    <!-- Modal Agregar Usuario-->
+    <div class="modal fade" id="agregarUsuario" tabindex="-1" role="dialog" aria-labelledby="agregarUsuario" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="agregarUsuario">Nuevo Usuario</h5>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+         </div>
+        </div>
+    </div>
+
+   
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/923fb35536.js" crossorigin="anonymous"></script>
+
+  </body>
+</html>

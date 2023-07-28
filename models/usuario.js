@@ -15,7 +15,6 @@ class Usuario{
 
 Usuario.login = async (usuario, contrasena) =>{
     try {
-        console.log("parametros: "+ usuario, contrasena)
         const pool = await createPool();
         const connection = await pool.getConnection();
         const query = `SELECT * FROM usuario WHERE usuario = ? AND contrasena = ?`;
