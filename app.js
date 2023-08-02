@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import routes from './routes/indexRoutes.js';
 import contactoRoutes from './routes/contactoRoutes.js';
 import usuarioRoutes from './routes/usuarioRoutes.js';
+import empresaRoutes from './routes/empresaRoutes.js';
 
 const app = express()
 
@@ -28,6 +29,7 @@ app.use(cookieParser())
 app.use(routes);
 app.use(contactoRoutes);
 app.use(usuarioRoutes);
+app.use(empresaRoutes);
 
 app.listen(3000, () =>{
     console.log('Servidor Corriendo en http://localhost:3000')

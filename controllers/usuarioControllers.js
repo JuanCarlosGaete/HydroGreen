@@ -1,5 +1,4 @@
 import {Usuario} from '../models/usuario.js';
-import {Contacto} from '../models/contacto.js';
 
 export const login = async(req, res)=>{
 
