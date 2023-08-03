@@ -20,7 +20,7 @@ export const login = async(req, res)=>{
                     ruta: "",
                   });
             }else if(datosUsuario[0].id_rol == 1){
-                res.redirect("/homeAdmin")
+                res.redirect("/contacto")
 
             }else{
                 {

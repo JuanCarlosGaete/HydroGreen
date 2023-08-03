@@ -5,6 +5,7 @@ import routes from './routes/indexRoutes.js';
 import contactoRoutes from './routes/contactoRoutes.js';
 import usuarioRoutes from './routes/usuarioRoutes.js';
 import empresaRoutes from './routes/empresaRoutes.js';
+import clienteRoutes from './routes/clienteRoutes.js';
 
 const app = express()
 
@@ -30,6 +31,7 @@ app.use(routes);
 app.use(contactoRoutes);
 app.use(usuarioRoutes);
 app.use(empresaRoutes);
+app.use(clienteRoutes);
 
 app.listen(3000, () =>{
     console.log('Servidor Corriendo en http://localhost:3000')
